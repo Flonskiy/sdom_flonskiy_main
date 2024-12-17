@@ -1,0 +1,27 @@
+{
+  "name": "sdom_flonskiy_main",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npx tailwindcss -i ./tw-input.css -o ./tw-output.css -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  },
+  "dependencies": {
+    "@fontsource/fira-sans": "^5.1.0",
+    "@fontsource/honk": "^5.1.0",
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/open-sans": "^5.1.0",
+    "@fontsource/roboto": "^5.1.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "boxicons": "^2.1.4",
+    "caniuse-lite": "^1.0.30001689",
+    "jquery": "^3.7.1",
+    "luxon": "^3.5.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  }
+}

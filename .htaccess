@@ -1,0 +1,29 @@
+# --------------------------
+# |                        |
+# |   Apache Config File   |
+# |                        |
+# --------------------------
+
+Options -Indexes
+
+<Files .htaccess>
+    Require all denied
+</Files>
+
+RewriteEngine On
+
+# Redirect HTTP to HTTPS and add 'www.' to the domain
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove .php and .html extensions from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f [OR]
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^\.]+)/?$ $1 [L]
+
+# Redirect to URLs without .php or .html extensions
+RewriteCond %{THE_REQUEST} \.php(\s|\?) [OR]
+RewriteCond %{THE_REQUEST} \.html(\s|\?)
+RewriteRule ^(.+)\.(php|html)$ /$1 [R=301,L]
