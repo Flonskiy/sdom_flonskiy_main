@@ -1,0 +1,33 @@
+{
+  "name": "sdom_flonskiy_main",
+  "version": "1.0.0",
+  "description": "A fun project exploring design, web development, and creativity. Just having fun with code and making things look good!",
+  "keywords": [
+    "flonskiy"
+  ],
+  "homepage": "https://github.com/Flonskiy/sdom_flonskiy_main#readme",
+  "bugs": {
+    "url": "https://github.com/Flonskiy/sdom_flonskiy_main/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flonskiy/sdom_flonskiy_main.git"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "author": "Flonskiy",
+  "type": "module",
+  "main": "scripts.js",
+  "scripts": {
+    "watch:scss": "sass --watch src/scss/main.scss:src/css/main.css src/scss/styles.scss:src/css/styles.css"
+  },
+  "dependencies": {
+    "@fontsource/fira-sans": "^5.1.1",
+    "@fontsource/honk": "^5.1.1",
+    "@fontsource/inter": "^5.1.1",
+    "@fontsource/open-sans": "^5.1.1",
+    "@fontsource/roboto": "^5.1.1",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "boxicons": "^2.1.4",
+    "caniuse-lite": "^1.0.30001692"
+  }
+}

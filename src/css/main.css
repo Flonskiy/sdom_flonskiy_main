@@ -1,0 +1,40 @@
+.theme-switch-light {
+  border-width: 0px;
+  border-radius: 100%;
+  background-color: black;
+  color: white;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  cursor: pointer;
+  bottom: 1rem;
+  right: 1rem;
+  position: fixed;
+}
+.theme-switch-light .theme-icon-light {
+  padding: 1rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.theme-switch-dark {
+  border-width: 0px;
+  border-radius: 100%;
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  cursor: pointer;
+  bottom: 1rem;
+  right: 1rem;
+  position: fixed;
+}
+.theme-switch-dark .theme-icon-dark {
+  padding: 1rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.body-dark {
+  background-color: black;
+  transition: background-color 0.5s ease;
+}
+
+/*# sourceMappingURL=main.css.map */
