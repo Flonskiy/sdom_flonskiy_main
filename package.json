@@ -18,7 +18,7 @@
   "type": "module",
   "main": "scripts.js",
   "scripts": {
-    "watch:scss": "sass --watch src/scss/main.scss:src/css/main.css src/scss/styles.scss:src/css/styles.css"
+    "watch:scss": "sass --watch src/scss:src/css --style compressed --verbose --no-source-map"
   },
   "dependencies": {
     "@fontsource/fira-sans": "^5.1.1",

@@ -1,17 +1,53 @@
-<body>
+<body class="body-light">
     <button id="theme-switch" class="theme-switch-light" role="button" aria-label="Switch Theme" tabindex="0">
         <i id="theme-icon" class="bx bxs-moon theme-icon-light"></i>
     </button>
 
-    <header>
+    <div id="alert-box" class="alert-box-light"></div>
+
+    <header class="header-content-light">
         <!-- Header content here -->
+        <nav class="navbar-light">
+            <div class="navbar-brand-light">
+                <a href="#" class="logo-link-light">
+                    <img class="navbar-logo-light swing" src="public/img/dummy_images/logo.png" height="48" width="48">
+                </a>
+            </div>
+            <form class="navbar-search-light" action="/search" method="GET">
+                <div class="search-container">
+                    <input type="text" name="searchQuery" placeholder="Search..." title="Type to search..." required>
+                    <button type="submit" class="search-btn">
+                        <i class="bx bx-search"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="navbar-nav-container-light">
+                <ul class="navbar-nav-light">
+                    <li class="navbar-menu-light">
+                        <a href="#" class="nav-link-light nav-menu-margin-light"><i class='bx bxs-videos jello'></i></a>
+                    </li>
+                    <li class="navbar-menu-light">
+                        <a href="#" class="nav-link-light nav-menu-margin-light"><i class='bx bxs-cabinet jello'></i></a>
+                    </li>
+                    <li class="navbar-menu-light">
+                        <a href="#" class="nav-link-light nav-menu-margin-light"><i class='bx bxs-news jello' ></i></a>
+                    </li>
+                    <li class="navbar-menu-light">
+                        <a href="#" class="nav-link-light"><i class='bx bxs-bell swing'></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-others-light">
+                <span class="navbar-grid-menu-light"><i class='bx bxs-grid'></i></span>
+            </div>
+        </nav>
     </header>
 
-    <main>
+    <main class="main-content-light">
         <!-- Main content here -->
     </main>
 
-    <footer>
+    <footer class="footer-content-light">
         <!-- Footer content here -->
     </footer>
 </body>

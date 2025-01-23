@@ -5,17 +5,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeIcon = document.getElementById('theme-icon');
   const themeSwitch = document.getElementById('theme-switch');
 
+  // Array of exceptions for bxs- to bx- toggling
+  const boxIconExceptions = ['bxs-moon', 'bx-sun', 'bxs-grid', 'bx-search'];
+
+  // Cache frequently accessed elements for toggling
+  let cachedElements = [];
+  document.querySelectorAll('*').forEach((element) => {
+    if (Array.from(element.classList).some((className) =>
+      className.endsWith('-light') || 
+      className.endsWith('-dark') || 
+      className.startsWith('bxs-') || 
+      className.startsWith('bx-')
+    )) {
+      cachedElements.push(element);
+    }
+  });
+
   // Apply theme styles based on the current theme
   const applyTheme = (theme) => {
     themeIcon.classList.toggle('bxs-moon', theme === 'light');
     themeIcon.classList.toggle('bx-sun', theme === 'dark');
+    toggleClassOnElements(theme === 'dark');
+    toggleLightDarkClasses(theme === 'dark');
+    toggleBoxIcons(theme === 'dark');
   };
 
   // Toggle theme and apply classes to relevant elements
   const toggleTheme = () => {
     const newTheme = themeIcon.classList.contains('bx-sun') ? 'light' : 'dark';
     applyTheme(newTheme);
-    toggleClassOnElements(newTheme === 'dark');
   };
 
   // Add/remove classes based on theme state
@@ -37,6 +55,38 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         console.warn(`Element with ID ${item.id || item.element} not found`);
       }
+    });
+  };
+
+  // Toggle all classes ending in '-light' or '-dark'
+  const toggleLightDarkClasses = (isDarkTheme) => {
+    cachedElements.forEach((element) => {
+      Array.from(element.classList).forEach((className) => {
+        if (className.endsWith('-light') && isDarkTheme) {
+          const newClass = className.replace('-light', '-dark');
+          element.classList.replace(className, newClass);
+        } else if (className.endsWith('-dark') && !isDarkTheme) {
+          const newClass = className.replace('-dark', '-light');
+          element.classList.replace(className, newClass);
+        }
+      });
+    });
+  };
+
+  // Toggle all boxicons classes ('bxs-' to 'bx-' and vice versa), excluding exceptions
+  const toggleBoxIcons = (isDarkTheme) => {
+    cachedElements.forEach((element) => {
+      Array.from(element.classList).forEach((className) => {
+        if (boxIconExceptions.includes(className)) return; // Skip exceptions
+
+        const isBoxIcon = className.startsWith('bxs-') || className.startsWith('bx-');
+        if (isBoxIcon) {
+          const newClass = isDarkTheme
+            ? className.replace(/^bx-/, 'bxs-') // bx- to bxs- for dark theme
+            : className.replace(/^bxs-/, 'bx-'); // bxs- to bx- for light theme
+          element.classList.replace(className, newClass);
+        }
+      });
     });
   };
 
@@ -137,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set initial theme based on system preference
   const initialTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   applyTheme(initialTheme);
-  toggleClassOnElements(initialTheme === 'dark');
 
   // Initial transformations for elements
   setTransformation(themeIcon, 0, 1);

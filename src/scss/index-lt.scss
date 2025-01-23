@@ -1,0 +1,35 @@
+@use "mixins/responsive";
+
+// LIGHT THEME
+.body-light {
+    @include responsive.responsive(desktop) {
+        background-color: white;
+        color: black;
+    }
+
+    // THEME SWITCH BUTTON
+    .theme-switch-light {
+        @include responsive.responsive(desktop) {
+            border-width: 0px;
+            border-radius: 100%;
+            background-color: black;
+            color: white;
+            transition:
+                background-color 0.5s ease,
+                color 0.5s ease;
+            cursor: pointer;
+            bottom: 1rem;
+            right: 1rem;
+            position: fixed;
+        }
+
+        // NOON ICON
+        .theme-icon-light {
+            @include responsive.responsive(desktop) {
+                padding: 1rem;
+                font-size: 2.25rem;
+                line-height: 2.5rem;
+            }
+        }
+    }
+}

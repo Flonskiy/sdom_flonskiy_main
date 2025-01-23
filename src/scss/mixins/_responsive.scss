@@ -1,0 +1,128 @@
+/*
+
+// Example 1: Using both min-width and max-width (ranges from 600px to 1200px)
+.example {
+  @include responsive(600px, 1200px) {
+    background-color: blue; // Applies background color blue for screen widths between 600px and 1200px
+  }
+}
+
+// Example 2: Using only min-width with a custom value (applies for screens with width >= 600px)
+.example {
+  @include responsive(600px) {
+    background-color: green; // Applies background color green for screen widths greater than or equal to 600px
+  }
+}
+
+// Example 3: Using only max-width (applies for screens with width <= 1200px)
+.example {
+  @include responsive(null, 1200px) {
+    background-color: red; // Applies background color red for screen widths less than or equal to 1200px
+  }
+}
+
+// Example 4: Using device aliases
+.example {
+  @include responsive(phone) {
+    background-color: lightblue; // Applies background color lightblue for phone screens (<= 576px)
+  }
+
+  @include responsive(tablet) {
+    background-color: lightgreen; // Applies background color lightgreen for tablet screens (576px to 768px)
+  }
+
+  @include responsive(laptop) {
+    background-color: lightcoral; // Applies background color lightcoral for laptop screens (992px to 1440px)
+  }
+
+  @include responsive(desktop) {
+    background-color: lightgoldenrodyellow; // Applies background color lightgoldenrodyellow for desktop screens (>= 1440px)
+  }
+}
+
+// Example 5: Using only min-width with a predefined breakpoint (applies for screens >= 768px)
+.example {
+  @include responsive(md) {
+    background-color: teal; // Applies background color teal for screen widths greater than or equal to 768px (md breakpoint)
+  }
+}
+
+// Example 6: Using a mix of predefined breakpoint names and custom values
+.example {
+  @include responsive(500px, xl) {
+    background-color: purple; // Applies background color purple for screen widths between 500px and 1440px (xl)
+  }
+
+// Example 7: No parameters (this will trigger a warning because neither min-width nor max-width is provided)
+.example {
+  @include responsive() {
+    background-color: yellow; // This will not be applied, and a warning will appear in the console
+  }
+}
+
+*/
+
+$breakpoints: (
+  // Extra small screens (small phones)
+  xs: 360px,
+  // Small screens (standard phones)
+  sm: 576px,
+  // Medium screens (tablets in portrait mode)
+  md: 768px,
+  // Large screens (tablets in landscape mode or small laptops)
+  lg: 992px,
+  // Extra large screens (standard desktops)
+  xl: 1200px,
+  // Extra extra large screens (large desktops)
+  xxl: 1440px,
+  // Ultra-wide screens (4K and larger displays)
+  ultra: 1920px
+);
+
+$device-aliases: (
+  phone: (
+    min: null,
+    max: sm
+  ),
+  tablet: (
+    min: sm,
+    max: md
+  ),
+  laptop: (
+    min: lg,
+    max: xxl
+  ),
+  desktop: (
+    min: xxl
+  )
+);
+
+@use "sass:map";
+
+@mixin responsive($min-width: null, $max-width: null) {
+  // Check if $min-width or $max-width matches a device alias
+  @if map.has-key($device-aliases, $min-width) {
+    $alias: map.get($device-aliases, $min-width);
+    $min-width: map.get($alias, min);
+    $max-width: map.get($alias, max);
+  }
+
+  $min-value: if(map.has-key($breakpoints, $min-width), map.get($breakpoints, $min-width), $min-width);
+  $max-value: if(map.has-key($breakpoints, $max-width), map.get($breakpoints, $max-width), $max-width);
+
+  @if $min-value != null and $max-value != null {
+    @media screen and (min-width: #{$min-value}) and (max-width: #{$max-value}) {
+      @content;
+    }
+  } @else if $min-value != null {
+    @media screen and (min-width: #{$min-value}) {
+      @content;
+    }
+  } @else if $max-value != null {
+    @media screen and (max-width: #{$max-value}) {
+      @content;
+    }
+  } @else {
+    @warn "You must provide at least one width (min-width or max-width) for the responsive mixin.";
+  }
+}

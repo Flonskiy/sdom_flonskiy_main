@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="public/img/dummy_images/favicon_io/favicon.ico" type="image/x-icon">
@@ -9,8 +10,9 @@
   <!-- CSS Path(s) -->
   <link rel="stylesheet" href="/node_modules/boxicons/css/boxicons.min.css" />
   <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
-  <link rel="stylesheet" href="/src/css/styles.css" />
-  <link rel="stylesheet" href="/src/css/main.css" />
+  <link rel="stylesheet" href="/src/css/global.css" />
+  <link rel="stylesheet" href="/src/css/index-lt.css" />
+  <link rel="stylesheet" href="/src/css/index-dt.css" />
 
   <title>Flonskiy</title>
 
@@ -33,7 +35,7 @@
 
   <!-- JS Path(s) -->
   <script src="/src/js/scripts.js"></script>
-  <script src="/src/js/index.js"></script>
+  <script type="module" src="/src/js/alertBox.js"></script>
   <script type="module" src="/src/js/themeSwitch.js"></script>
 </body>
 

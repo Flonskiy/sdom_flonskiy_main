@@ -1,0 +1,219 @@
+@use "mixins/responsive";
+
+// DARK THEME
+.body-dark {
+    @include responsive.responsive(desktop) {
+        background-color: black;
+        color: white;
+    }
+
+    // THEME SWITCH BUTTON
+    .theme-switch-dark {
+        @include responsive.responsive(desktop) {
+            border-width: 0px;
+            border-radius: 100%;
+            background-color: white;
+            color: black;
+            transition:
+                background-color 0.5s ease,
+                color 0.5s ease;
+            cursor: pointer;
+            bottom: 1rem;
+            right: 1rem;
+            position: fixed;
+        }
+
+        // SUN ICON
+        .theme-icon-dark {
+            @include responsive.responsive(desktop) {
+                padding: 1rem;
+                font-size: 2.25rem;
+                line-height: 2.5rem;
+            }
+        }
+    }
+
+    // HEADER CONTENT
+    .header-content-dark {
+        // NAVIGATION BAR
+        .navbar-dark {
+            @include responsive.responsive(desktop) {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                background-color: #083344;
+                padding: 0.5% 1%;
+            }
+
+            // LOGO
+            .navbar-brand-dark {
+                @include responsive.responsive(desktop) {
+                    display: flex;
+                    justify-content: start;
+                    width: 10%;
+                }
+
+                .logo-link-dark {
+                    @include responsive.responsive(desktop) {
+                        display: flex;
+                    }
+
+                    .navbar-logo-dark {
+                        @include responsive.responsive(desktop) {
+                            border-radius: 12px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            // SEARCH BAR
+            .navbar-search-dark {
+                @include responsive.responsive(desktop) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 30%;
+                }
+
+                .search-container {
+                    @include responsive.responsive(desktop) {
+                        position: relative;
+                        display: flex;
+                        width: 90%;
+                        align-items: center;
+                    }
+
+                    input {
+                        @include responsive.responsive(desktop) {
+                            display: flex;
+                            align-items: center;
+                            height: 2.65rem;
+                            width: 100%;
+                            padding: 0 1rem;
+                            border: 1px solid #f1f1f19c;
+                            border-radius: 1rem;
+                            font-size: 1.25rem;
+                            color: white;
+                            background-color: transparent;
+                            margin-right: 0.25rem;
+                        }
+
+                        &:focus {
+                            @include responsive.responsive(desktop) {
+                                outline: none;
+                                border: 1px solid aqua;
+                            }
+                        }
+
+                        &::placeholder {
+                            @include responsive.responsive(desktop) {
+                                color: white;
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+
+                    .search-btn {
+                        @include responsive.responsive(desktop) {
+                            position: absolute;
+                            display: flex;
+                            align-items: center;
+                            cursor: pointer;
+                            right: 1rem;
+                            background: transparent;
+                            border: none;
+                            color: white;
+                            font-size: 1.5rem;
+                            pointer-events: all;
+                            transition: color 0.5s ease;
+                        }
+
+                        &:hover {
+                            @include responsive.responsive(desktop) {
+                                color: aqua;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // NAVIGATION MENU
+            .navbar-nav-container-dark {
+                @include responsive.responsive(desktop) {
+                    display: flex;
+                    width: 50%;
+                }
+
+                .navbar-nav-dark {
+                    @include responsive.responsive(desktop) {
+                        display: flex;
+                        align-items: center;
+                        justify-content: end;
+                        width: 100%;
+                    }
+
+                    .navbar-menu-dark {
+                        @include responsive.responsive(desktop) {
+                            display: flex;
+                        }
+
+                        .nav-menu-margin-dark {
+                            @include responsive.responsive(desktop) {
+                                margin: 0 6rem 0 0;
+                            }
+                        }
+
+                        .nav-link-dark {
+                            @include responsive.responsive(desktop) {
+                                font-size: 2rem;
+                                cursor: default;
+                            }
+
+                            i {
+                                @include responsive.responsive(desktop) {
+                                    color: white;
+                                    transition: color 0.5s ease;
+                                    cursor: pointer;
+                                }
+
+                                &:hover {
+                                    @include responsive.responsive(desktop) {
+                                        color: aqua;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // OTHERS (NAVBAR)
+            .navbar-others-dark {
+                @include responsive.responsive(desktop) {
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+                    width: 10%;
+                }
+
+                // GRID MENU
+                .navbar-grid-menu-dark {
+                    @include responsive.responsive(desktop) {
+                        display: flex;
+                        font-size: 2.8rem;
+                        cursor: pointer;
+                        color: white;
+                        transition: color 0.5s ease;
+                    }
+
+                    &:hover {
+                        @include responsive.responsive(desktop) {
+                            color: aqua;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
